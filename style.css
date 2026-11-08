@@ -1,0 +1,350 @@
+/* ==========================================================================
+   Versão Simples - Guia de Corrida por Níveis
+   Foco: Visual limpo, minimalista, responsivo, boa UX e Acessibilidade
+   ========================================================================== */
+
+:root {
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #4b5563;
+  --primary: #1d4ed8;       /* Azul forte com ótimo contraste */
+  --primary-hover: #1e40af;
+  --success: #15803d;
+  --border: #d1d5db;
+  --focus: #d97706;
+}
+
+/* Modo Alto Contraste opcional */
+body.alto-contraste {
+  --bg: #000000;
+  --surface: #000000;
+  --text: #ffffff;
+  --muted: #e5e7eb;
+  --primary: #fde047;
+  --primary-hover: #facc15;
+  --success: #4ade80;
+  --border: #ffffff;
+  --focus: #38bdf8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Acessibilidade: foco visível para navegação por teclado (Tab) */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Link "Pular para o conteúdo" */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 10px;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+body.alto-contraste .skip-link {
+  color: #000000;
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
+/* Container centralizado e simples */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Cabeçalho simples */
+header {
+  background-color: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 16px 0;
+}
+
+.header-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.titulo-site {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.controles-acessibilidade {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.btn-contraste {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  min-height: 38px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.btn-contraste:hover {
+  border-color: var(--primary);
+}
+
+/* Menu de Navegação */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+nav a {
+  display: inline-block;
+  padding: 8px 14px;
+  min-height: 40px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--bg);
+}
+
+nav a:hover {
+  border-color: var(--primary);
+}
+
+nav a[aria-current="page"] {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  font-weight: bold;
+}
+
+body.alto-contraste nav a[aria-current="page"] {
+  color: #000000;
+}
+
+/* Indicador de Nível / Onde estou (UX) */
+.barra-progresso {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin: 20px 0;
+  font-size: 0.95rem;
+}
+
+/* Conteúdo Principal */
+main {
+  padding-bottom: 40px;
+}
+
+.bloco {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* Lista de Níveis na Home */
+.lista-niveis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.card-simples {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-simples h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+/* Tabela Simples e Responsiva */
+.tabela-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--bg);
+}
+
+/* Botões e Links de Ação */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  min-height: 44px;
+  background-color: var(--primary);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+}
+
+body.alto-contraste .btn {
+  color: #000000;
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-secundario:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* Formulário simples */
+.campo {
+  margin-bottom: 12px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px 10px;
+  min-height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+/* Paginação entre Níveis (Anterior / Próximo) */
+.navegacao-niveis {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* Rodapé */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  background-color: var(--surface);
+}
+
+/* Responsividade Mobile */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav a {
+    width: 100%;
+  }
+
+  .navegacao-niveis {
+    flex-direction: column;
+  }
+
+  .navegacao-niveis .btn {
+    width: 100%;
+  }
+}

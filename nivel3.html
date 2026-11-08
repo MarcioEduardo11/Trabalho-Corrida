@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nível 3: Avançado (21 km / 42 km) | Guia Simples de Corrida</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header>
+    <div class="container">
+      <div class="header-topo">
+        <a href="index.html" class="titulo-site">🏃 Guia de Corrida</a>
+        <div class="controles-acessibilidade" role="group" aria-label="Controles de acessibilidade">
+          <button type="button" class="btn-contraste" onclick="alterarFonte(-10)" aria-label="Diminuir fonte">A-</button>
+          <button type="button" class="btn-contraste" onclick="alterarFonte(0)" aria-label="Fonte tamanho padrão">A</button>
+          <button type="button" class="btn-contraste" onclick="alterarFonte(10)" aria-label="Aumentar fonte">A+</button>
+          <button type="button" class="btn-contraste" onclick="alternarContraste()">
+            Alto Contraste
+          </button>
+        </div>
+      </div>
+
+      <nav aria-label="Menu de níveis">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="nivel1.html">Nível 1: Iniciante (5 km)</a></li>
+          <li><a href="nivel2.html">Nível 2: Intermediário (10 km)</a></li>
+          <li><a href="nivel3.html" aria-current="page">Nível 3: Avançado (21 km / 42 km)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container">
+    <div class="barra-progresso" role="status">
+      <strong>Progresso:</strong> Etapa 3 de 3 — Nível Avançado (Meta: Meia Maratona 21 km e Maratona 42 km)
+    </div>
+
+    <section class="bloco">
+      <h1>Nível 3: Avançado (21 km e Maratona 42 km)</h1>
+      <p>
+        Nas longas distâncias, o planejamento de energia, sono e ritmo de prova é essencial para cruzar a linha de chegada bem.
+      </p>
+
+      <h2>Estratégia para Provas Longas</h2>
+      <ol>
+        <li><strong>Comece devagar:</strong> Nos primeiros quilômetros economize energia para a metade final da prova.</li>
+        <li><strong>Reposição de Energia:</strong> Consuma 1 gel de carboidrato (ou jujuba esportiva) a cada 40 minutos de corrida.</li>
+        <li><strong>Polimento (Semana da Prova):</strong> Reduza o volume de treinos nos últimos 10 dias antes da prova para descansar as pernas.</li>
+      </ol>
+    </section>
+
+    <section class="bloco">
+      <h2>Definir Minha Próxima Meta</h2>
+      <form onsubmit="event.preventDefault(); document.getElementById('msg-meta').textContent = 'Meta salva com sucesso! Bons treinos!';">
+        <div class="campo">
+          <label for="nome">Seu Nome:</label>
+          <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+        </div>
+
+        <div class="campo">
+          <label for="distancia">Qual prova você quer correr?</label>
+          <select id="distancia" name="distancia">
+            <option value="5km">5 km (Nível 1)</option>
+            <option value="10km">10 km (Nível 2)</option>
+            <option value="21km" selected>21 km - Meia Maratona (Nível 3)</option>
+            <option value="42km">42 km - Maratona (Nível 3)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn">Confirmar Meta</button>
+        <p id="msg-meta" role="status" aria-live="polite" style="margin-top: 10px; font-weight: bold;"></p>
+      </form>
+
+      <div class="navegacao-niveis">
+        <a href="nivel2.html" class="btn btn-secundario">← Voltar ao Nível 2 (10 km)</a>
+        <a href="index.html" class="btn">↺ Voltar para a Página Inicial</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Projeto de IHC desenvolvido por Milena e Marcio - 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    let escalaFonte = parseInt(localStorage.getItem('fonte_simples') || '100', 10);
+    document.documentElement.style.fontSize = escalaFonte + '%';
+    if (localStorage.getItem('contraste_simples') === 'true') {
+      document.body.classList.add('alto-contraste');
+    }
+
+    function alterarFonte(delta) {
+      escalaFonte = delta === 0 ? 100 : Math.min(140, Math.max(80, escalaFonte + delta));
+      document.documentElement.style.fontSize = escalaFonte + '%';
+      localStorage.setItem('fonte_simples', escalaFonte);
+    }
+
+    function alternarContraste() {
+      const ativo = document.body.classList.toggle('alto-contraste');
+      localStorage.setItem('contraste_simples', ativo);
+    }
+  </script>
+</body>
+</html>

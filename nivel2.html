@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nível 2: Intermediário (10 km) | Guia Simples de Corrida</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header>
+    <div class="container">
+      <div class="header-topo">
+        <a href="index.html" class="titulo-site">🏃 Guia de Corrida</a>
+        <div class="controles-acessibilidade" role="group" aria-label="Controles de acessibilidade">
+          <button type="button" class="btn-contraste" onclick="alterarFonte(-10)" aria-label="Diminuir fonte">A-</button>
+          <button type="button" class="btn-contraste" onclick="alterarFonte(0)" aria-label="Fonte tamanho padrão">A</button>
+          <button type="button" class="btn-contraste" onclick="alterarFonte(10)" aria-label="Aumentar fonte">A+</button>
+          <button type="button" class="btn-contraste" onclick="alternarContraste()">
+            Alto Contraste
+          </button>
+        </div>
+      </div>
+
+      <nav aria-label="Menu de níveis">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="nivel1.html">Nível 1: Iniciante (5 km)</a></li>
+          <li><a href="nivel2.html" aria-current="page">Nível 2: Intermediário (10 km)</a></li>
+          <li><a href="nivel3.html">Nível 3: Avançado (21 km / 42 km)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container">
+    <div class="barra-progresso" role="status">
+      <strong>Progresso:</strong> Etapa 2 de 3 — Nível Intermediário (Meta: 10 km)
+    </div>
+
+    <section class="bloco">
+      <h1>Nível 2: Intermediário (Evolução para 10 km)</h1>
+      <p>
+        Para quem já corre 5 km sem pausas. Neste nível dividimos a semana em <strong>3 tipos de treino diferentes</strong> para ganhar resistência e velocidade.
+      </p>
+
+      <h2>Divisão Semanal de Treinos</h2>
+      <div class="tabela-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Dia Sugerido</th>
+              <th scope="col">Tipo de Treino</th>
+              <th scope="col">Como Fazer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Terça-feira</td>
+              <td><strong>Treino de Tiros (Velocidade)</strong></td>
+              <td>10 min leve + 6x 400m rápido (com 1 min30 andando)</td>
+            </tr>
+            <tr>
+              <td>Quinta-feira</td>
+              <td><strong>Ritmo Constante</strong></td>
+              <td>5 km a 6 km em ritmo moderado e contínuo</td>
+            </tr>
+            <tr>
+              <td>Domingo</td>
+              <td><strong>Treino Longo (Resistência)</strong></td>
+              <td>Aumentar 1 km por fim de semana (7 km, 8 km, 9 km até 10 km)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>Cuidados Importantes nos 10 km</h2>
+      <ul>
+        <li><strong>Treino Longo sempre leve:</strong> No domingo, corra devagar para aguentar a distância maior.</li>
+        <li><strong>Fortalecimento:</strong> Faça exercícios para panturrilha, coxa e abdômen 2 vezes na semana.</li>
+        <li><strong>Hidratação:</strong> Em treinos acima de 50 minutos, leve água ou planeje passar por bebedouros.</li>
+      </ul>
+
+      <div class="navegacao-niveis">
+        <a href="nivel1.html" class="btn btn-secundario">← Voltar ao Nível 1 (5 km)</a>
+        <a href="nivel3.html" class="btn">Avançar para o Nível 3 (21K / 42K) →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Projeto de IHC desenvolvido por Milena e Marcio - 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    let escalaFonte = parseInt(localStorage.getItem('fonte_simples') || '100', 10);
+    document.documentElement.style.fontSize = escalaFonte + '%';
+    if (localStorage.getItem('contraste_simples') === 'true') {
+      document.body.classList.add('alto-contraste');
+    }
+
+    function alterarFonte(delta) {
+      escalaFonte = delta === 0 ? 100 : Math.min(140, Math.max(80, escalaFonte + delta));
+      document.documentElement.style.fontSize = escalaFonte + '%';
+      localStorage.setItem('fonte_simples', escalaFonte);
+    }
+
+    function alternarContraste() {
+      const ativo = document.body.classList.toggle('alto-contraste');
+      localStorage.setItem('contraste_simples', ativo);
+    }
+  </script>
+</body>
+</html>

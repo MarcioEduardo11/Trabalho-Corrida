@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nível 1: Iniciante (5 km) | Guia Simples de Corrida</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header>
+    <div class="container">
+      <div class="header-topo">
+        <a href="index.html" class="titulo-site">🏃 Guia de Corrida</a>
+        <div class="controles-acessibilidade" role="group" aria-label="Controles de acessibilidade">
+          <button type="button" class="btn-contraste" onclick="alterarFonte(-10)" aria-label="Diminuir fonte">A-</button>
+          <button type="button" class="btn-contraste" onclick="alterarFonte(0)" aria-label="Fonte tamanho padrão">A</button>
+          <button type="button" class="btn-contraste" onclick="alterarFonte(10)" aria-label="Aumentar fonte">A+</button>
+          <button type="button" class="btn-contraste" onclick="alternarContraste()">
+            Alto Contraste
+          </button>
+        </div>
+      </div>
+
+      <nav aria-label="Menu de níveis">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="nivel1.html" aria-current="page">Nível 1: Iniciante (5 km)</a></li>
+          <li><a href="nivel2.html">Nível 2: Intermediário (10 km)</a></li>
+          <li><a href="nivel3.html">Nível 3: Avançado (21 km / 42 km)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container">
+    <div class="barra-progresso" role="status">
+      <strong>Progresso:</strong> Etapa 1 de 3 — Nível Iniciante (Meta: 5 km)
+    </div>
+
+    <section class="bloco">
+      <h1>Nível 1: Iniciante (Primeiros 5 km)</h1>
+      <p>
+        O objetivo deste nível é acostumar músculos e articulações ao impacto da corrida, intercalando caminhada com trote leve 3 vezes por semana.
+      </p>
+
+      <h2>Planilha Simples de 4 Semanas</h2>
+      <div class="tabela-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Semana</th>
+              <th scope="col">Treino (Terça, Quinta e Sábado)</th>
+              <th scope="col">Tempo Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Semana 1</td>
+              <td>5x (2 min trote leve + 2 min caminhada)</td>
+              <td>20 minutos</td>
+            </tr>
+            <tr>
+              <td>Semana 2</td>
+              <td>5x (3 min trote leve + 1 min caminhada)</td>
+              <td>20 minutos</td>
+            </tr>
+            <tr>
+              <td>Semana 3</td>
+              <td>3x (7 min corrida leve + 1 min caminhada)</td>
+              <td>24 minutos</td>
+            </tr>
+            <tr>
+              <td>Semana 4</td>
+              <td>25 a 30 minutos de corrida contínua sem parar</td>
+              <td>30 minutos (~5 km)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>Dicas Rápidas para o Iniciante</h2>
+      <ul>
+        <li>Corra em um ritmo em que você consiga conversar sem ficar sem ar.</li>
+        <li>Use um tênis confortável e roupas leves.</li>
+        <li>Não se preocupe com velocidade agora: foque em completar o tempo proposto.</li>
+      </ul>
+
+      <!-- Navegação entre os níveis -->
+      <div class="navegacao-niveis">
+        <a href="index.html" class="btn btn-secundario">← Voltar para o Início</a>
+        <a href="nivel2.html" class="btn">Avançar para o Nível 2 (10 km) →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Projeto de IHC desenvolvido por Milena e Marcio - 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    let escalaFonte = parseInt(localStorage.getItem('fonte_simples') || '100', 10);
+    document.documentElement.style.fontSize = escalaFonte + '%';
+    if (localStorage.getItem('contraste_simples') === 'true') {
+      document.body.classList.add('alto-contraste');
+    }
+
+    function alterarFonte(delta) {
+      escalaFonte = delta === 0 ? 100 : Math.min(140, Math.max(80, escalaFonte + delta));
+      document.documentElement.style.fontSize = escalaFonte + '%';
+      localStorage.setItem('fonte_simples', escalaFonte);
+    }
+
+    function alternarContraste() {
+      const ativo = document.body.classList.toggle('alto-contraste');
+      localStorage.setItem('contraste_simples', ativo);
+    }
+  </script>
+</body>
+</html>
