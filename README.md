@@ -105,7 +105,7 @@ Projeto acadêmico desenvolvido em 2026 para a disciplina de Interação Humano-
 
 ## 🌐 Acesso ao Projeto
 
-**Repositório GitHub:** 
+**Repositório GitHub:** "https://github.com/MarcioEduardo11/Trabalho-Corrida"
 
 **Site publicado:** 
 
