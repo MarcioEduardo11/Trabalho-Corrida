@@ -108,7 +108,7 @@
       escalaFonte = delta === 0 ? 100 : Math.min(140, Math.max(80, escalaFonte + delta));
       document.documentElement.style.fontSize = escalaFonte + '%';
       localStorage.setItem('fonte_simples', escalaFonte);
-    }
+    } 
 
     function alternarContraste() {
       const ativo = document.body.classList.toggle('alto-contraste');
